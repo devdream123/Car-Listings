@@ -88,7 +88,7 @@ const Listings = (props) => {
       <div className="listings__header">
         <h3 className="listings__header_title">Search Results</h3>
         <p className="listings__header_subtitle">
-          <span>{listingsData.length} results</span> for <span>Ferrari</span>{" "}
+          <span>{listingsData.length} results</span> for <span>Ferrari</span>
           in&nbsp;
           <span>Australia</span>
         </p>
