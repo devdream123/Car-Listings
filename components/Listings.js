@@ -81,7 +81,7 @@ const Listings = ({ keyword, location, dataEndpoint }) => {
     return () => {
       console.info("clean up Listings component");
     };
-  }, []);
+  }, [keyword]);
 
   if (isLoading) {
     return <p>Loading...</p>;
