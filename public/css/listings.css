@@ -1,0 +1,118 @@
+:root {
+  /* brand colors */
+  --brand-secondary-color: #d1eeee;
+
+  /* font sizes */
+  --font-size-xs: 12px;
+  --font-size-sm: 14px;
+
+  /* font colors */
+  --text-color-secondary: #23a3c7;
+  --text-color-supporting01: #c0c0c0;
+
+  /* line colors*/
+  --line-color-primary: #d3d3d3;
+
+  /* spacing */
+  --spacing-xs: 5px;
+  --spacing-sm: 10px;
+  --spacing-md: 20px;
+  --spacing-lg: 30px;
+  /* border radius*/
+  --border-radius-sm: 3px;
+}
+
+.listings {
+  padding: var(--spacing-sm) var(--spacing-lg);
+}
+
+.listings__header_title {
+  margin: 0 0 var(--spacing-xs) 0;
+}
+.listings__header_subtitle {
+  margin: 0;
+}
+
+.listings__header_subtitle span {
+  color: var(--text-color-secondary);
+}
+.listings__horizontal_line {
+  margin: var(--spacing-md) 0;
+  border: 1px solid var(--line-color-primary);
+}
+
+.listings__grid {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  flex-direction: column;
+}
+
+.listing {
+  width: 100%;
+  margin-bottom: var(--spacing-lg);
+}
+
+.listing__title {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 1; /* limit to 1 lines*/
+  -webkit-box-orient: vertical;
+  margin: 0;
+}
+
+.listing__price_loc_container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.listing__price {
+  color: var(--text-color-secondary);
+  font-weight: bold;
+}
+.listing__location {
+  color: var(--text-color-supporting01);
+  font-size: var(--font-size-xs);
+}
+.listing__image {
+  object-fit: cover;
+}
+
+.listing__desc {
+  font-size: var(--font-size-sm);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 3; /* limit to 3 lines*/
+  -webkit-box-orient: vertical;
+}
+.action {
+  margin-right: var(--spacing-sm);
+  width: 50px;
+  height: 25px;
+  background: var(--brand-secondary-color);
+  border: none;
+  border-radius: var(--border-radius-sm);
+  font-weight: bold;
+}
+
+@media (min-width: 800px) {
+  /* tablet */
+  .listings__grid {
+    flex-direction: row;
+  }
+  .listing {
+    width: 44%;
+  }
+}
+
+@media (min-width: 1200px) {
+  /* desktop */
+  .listing {
+    width: 30%;
+  }
+  .listing:nth-child(3) {
+    margin-right: 0;
+  }
+}
