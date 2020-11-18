@@ -15,7 +15,6 @@ const formatAsCurrency = (int) => {
 
 const Listing = (props) => {
   const { content } = props;
-  console.log("content: ", content);
   const handleActionOnClick = (action, title) => {
     console.log(`${action}: ${title}`);
   };
