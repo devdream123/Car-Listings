@@ -53,7 +53,7 @@ const Listing = (props) => {
 };
 
 const LISTING_API = "http://localhost:3000/api/listings";
-const Listings = (props) => {
+const Listings = () => {
   const [error, setError] = useState(null);
   const [isLoading, setIsLoading] = useState(true);
   const [listingsData, setListingsData] = useState([]);
