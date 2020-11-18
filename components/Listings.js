@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import PropTypes from "prop-types";
 
 const ACTIONS = ["View", "Reply"];
 
@@ -14,6 +15,7 @@ const formatAsCurrency = (int) => {
 
 const Listing = (props) => {
   const { content } = props;
+  console.log("content: ", content);
   const handleActionOnClick = (action, title) => {
     console.log(`${action}: ${title}`);
   };
@@ -52,14 +54,22 @@ const Listing = (props) => {
   );
 };
 
-const LISTING_API = "http://localhost:3000/api/listings";
-const Listings = () => {
+Listing.propTypes = {
+  content: PropTypes.shape({
+    title: PropTypes.string.isRequired,
+    description: PropTypes.string,
+    price: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
+    imgUrl: PropTypes.string,
+  }),
+};
+
+const Listings = ({ keyword, location, dataEndpoint }) => {
   const [error, setError] = useState(null);
   const [isLoading, setIsLoading] = useState(true);
   const [listingsData, setListingsData] = useState([]);
 
   useEffect(() => {
-    fetch(LISTING_API)
+    fetch(dataEndpoint)
       .then((response) => response.json())
       .then((data) => {
         setListingsData([...data]);
@@ -88,9 +98,9 @@ const Listings = () => {
       <div className="listings__header">
         <h3 className="listings__header_title">Search Results</h3>
         <p className="listings__header_subtitle">
-          <span>{listingsData.length} results</span> for <span>Ferrari</span>
+          <span>{listingsData.length} results</span> for <span>{keyword}</span>
           &nbsp;in&nbsp;
-          <span>Australia</span>
+          <span>{location}</span>
         </p>
       </div>
       <hr className="listings__horizontal_line" />
@@ -101,6 +111,12 @@ const Listings = () => {
       </div>
     </div>
   );
+};
+
+Listings.propTypes = {
+  keyword: PropTypes.string.isRequired,
+  location: PropTypes.string,
+  dataEndpoint: PropTypes.string,
 };
 
 export default Listings;
